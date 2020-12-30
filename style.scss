@@ -1,0 +1,573 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@700&display=swap");
+
+$pink: hsl(322, 100%, 66%);
+$light-Pink: hsl(321, 100%, 78%);
+$light-Red: hsl(0, 100%, 63%);
+$dark-Cyan: hsl(192, 100%, 9%);
+$pale-Blue: hsl(207, 100%, 98%);
+$white: hsl(255, 100%, 100%);
+$font-primary: "Open Sans", sans-serif;
+$font-secondary: "Poppins", sans-serif;
+$transition-button: 0.4s;
+
+@mixin button($color) {
+  display: inline-block;
+  border: 1px solid $pink;
+  border-radius: 5rem;
+  text-decoration: none;
+  text-align: center;
+  @if $color == $white {
+    width: 250px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 3.2;
+    color: $white;
+    background-color: $pink;
+    -webkit-box-shadow: 0px 5px 10px -1px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0px 5px 10px -1px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 5px 10px -1px rgba(0, 0, 0, 0.25);
+    transition: $transition-button;
+    &:hover {
+      background-color: transparent;
+      color: $pink;
+      transition: $transition-button;
+    }
+    @media screen and (min-width: 1024px) {
+      width: 350px;
+      font-size: 2.2rem;
+      line-height: 3.5;
+    }
+  }
+  @if $color == $pink {
+    width: 100px;
+    font-size: 1.2rem;
+    line-height: 2.5;
+    color: $pink;
+    background-color: transparent;
+    -webkit-box-shadow: 0px 0px 5px 1px rgba(168, 0, 106, 0.3);
+    -moz-box-shadow: 0px 0px 5px 1px rgba(168, 0, 106, 0.3);
+    box-shadow: 0px 0px 5px 1px rgba(168, 0, 106, 0.3);
+    transition: $transition-button;
+    &:hover {
+      background-color: $pink;
+      color: $white;
+      transition: $transition-button;
+    }
+    @media screen and (min-width: 1024px) {
+      width: 200px;
+      font-size: 2rem;
+      line-height: 3;
+    }
+  }
+}
+
+@mixin imageNormal($top, $section, $image) {
+  background-repeat: no-repeat;
+  background-size: 100%;
+  @if $top == normal {
+    background-position-y: bottom;
+  } @else {
+    background-position-y: top;
+  }
+  @if $section == normal {
+    background-image: url(images/bg-section- + $image);
+  } @else {
+    background-image: url(images/bg-footer- + $image);
+  }
+}
+
+img {
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: $font-primary;
+  font-size: 10px;
+  line-height: 1.5;
+  color: $dark-Cyan;
+}
+
+body {
+  font-size: 1rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, max-content);
+  gap: 12rem;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+h1 {
+  margin-bottom: 2.5rem;
+  font-family: $font-secondary;
+  font-size: 2.8rem;
+  letter-spacing: 0.02rem;
+  @media screen and (min-width: 960px) {
+    margin-bottom: 2.8rem;
+    font-size: 3.3rem;
+    letter-spacing: 0.05rem;
+  }
+  @media screen and (min-width: 1024px) {
+    margin-bottom: 3.1rem;
+    font-size: 3.8rem;
+    letter-spacing: 0.08rem;
+  }
+  @media screen and (min-width: 1284px) {
+    margin-bottom: 3.1rem;
+    font-size: 4.2rem;
+    letter-spacing: 0.08rem;
+  }
+}
+
+p {
+  font-size: 1.5rem;
+  @media screen and (min-width: 960px) {
+    font-size: 1.8rem;
+  }
+  @media screen and (min-width: 1024px) {
+    font-size: 2.1rem;
+  }
+}
+
+h2 {
+  font-size: 2.6rem;
+  @media screen and (min-width: 960px) {
+    font-size: 2.8rem;
+  }
+  @media screen and (min-width: 1024px) {
+    font-size: 3rem;
+  }
+}
+
+.header {
+  grid-row: 1/2;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit(minmax(320px) 1fr));
+  gap: 10rem;
+  &__menu {
+    width: 100%;
+    min-width: 320px;
+    max-width: 80%;
+    padding-top: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+    ul {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      li {
+        .logo {
+          img {
+            width: 150px;
+            @media screen and (min-width: 960px) {
+              width: 200px;
+            }
+            @media screen and (min-width: 1024px) {
+              width: 300px;
+            }
+          }
+        }
+        .button {
+          @include button($pink);
+        }
+      }
+    }
+  }
+  &__heading {
+    width: 100%;
+    min-width: 320px;
+    max-width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    p {
+      max-width: 640px;
+      margin-bottom: 5rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    a {
+      @include button($white);
+    }
+  }
+  &__bg {
+    width: 100%;
+    min-width: 320px;
+    max-width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.main {
+  grid-row: 2/3;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(5, max-content);
+  gap: 15rem;
+  &__message {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    row-gap: 6rem;
+    div {
+      display: flex;
+      flex-flow: column wrap;
+      gap: 1rem;
+      margin-left: auto;
+      margin-right: auto;
+      figure {
+        width: 30%;
+      }
+      .menssage__number {
+        font-size: 6rem;
+        font-weight: 700;
+        letter-spacing: 0.1rem;
+      }
+      .menssage__text {
+        text-align: center;
+        opacity: 0.5;
+      }
+    }
+  }
+  &__menssage,
+  &__grow,
+  &__conversation,
+  &__user {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    .detail--title {
+      padding-top: 5rem;
+      font-family: $font-secondary;
+      font-size: 2.5rem;
+      text-align: center;
+    }
+    .detail--text {
+      padding-top: 2.5rem;
+      padding-bottom: 5rem;
+      text-align: center;
+    }
+    @media screen and (min-width: 640px) {
+      margin-top: 10rem;
+      margin-bottom: 10rem;
+    }
+    .section--container {
+      width: 80%;
+      margin-top: 5rem;
+      margin-bottom: 3rem;
+      margin-left: auto;
+      margin-right: auto;
+      @media screen and(min-width: 1024px) {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        gap: 10rem;
+        img {
+          width: 50%;
+        }
+        .detail--title {
+          font-size: 3.5rem;
+          text-align: left;
+        }
+        .detail--text {
+          text-align: left;
+        }
+      }
+    }
+  }
+
+  &__grow {
+    background-color: $pale-Blue;
+    &::before {
+      position: absolute;
+      content: "";
+      display: block;
+      @include imageNormal(normal, normal, "top-mobile-1.svg");
+      width: 100%;
+      top: calc(-100% - 25rem);
+      bottom: 100%;
+      left: 0;
+      right: 0;
+      @media screen and(min-width: 1024px) {
+        @include imageNormal(normal, normal, "top-desktop-1.svg");
+      }
+    }
+    &::after {
+      position: absolute;
+      content: "";
+      display: block;
+      @include imageNormal(anormal, normal, "bottom-mobile-1.svg");
+      width: 100%;
+      top: 100%;
+      bottom: -25rem;
+      left: 0;
+      right: 0;
+      @media screen and(min-width: 1024px) {
+        @include imageNormal(anormal, normal, "bottom-desktop-1.svg");
+      }
+    }
+    .section--container {
+      @media screen and(min-width: 1024px) {
+        flex-direction: row-reverse;
+      }
+    }
+  }
+  &__user {
+    background-color: $pale-Blue;
+    &::before {
+      position: absolute;
+      content: "";
+      display: block;
+      @include imageNormal(normal, normal, "top-mobile-2.svg");
+      width: 100%;
+      top: calc(-100% - 25rem);
+      bottom: 100%;
+      left: 0;
+      right: 0;
+      @media screen and(min-width: 1024px) {
+        @include imageNormal(normal, normal, "top-desktop-2.svg");
+      }
+    }
+    &::after {
+      position: absolute;
+      content: "";
+      display: block;
+      @include imageNormal(anormal, normal, "bottom-mobile-2.svg");
+      width: 100%;
+      top: 100%;
+      bottom: -25rem;
+      left: 0;
+      right: 0;
+      @media screen and(min-width: 1024px) {
+        @include imageNormal(anormal, normal, "bottom-desktop-2.svg");
+      }
+    }
+    .section--container {
+      @media screen and(min-width: 1024px) {
+        flex-direction: row-reverse;
+      }
+    }
+  }
+  &__comunity {
+    text-align: center;
+    margin-bottom: 15rem;
+    h2 {
+      font-family: $font-secondary;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+    }
+    a {
+      @include button($white);
+    }
+  }
+}
+
+.footer {
+  grid-row: 3/4;
+  position: relative;
+  color: $white;
+  background-color: $dark-Cyan;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(4, max-content);
+
+  &::before {
+    position: absolute;
+    content: "";
+    display: block;
+    top: calc(-20vw);
+    height: calc(20vw);
+    width: 100%;
+    @include imageNormal(normal, anormal, "top-mobile.svg");
+    @media screen and(min-width: 1024px) {
+      @include imageNormal(normal, anormal, "top-desktop.svg");
+    }
+  }
+  &__logo {
+    width: 90%;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+    img {
+      width: 200px;
+      margin-bottom: 1rem;
+    }
+  }
+  &__news {
+    grid-row: 1/2;
+    width: 90%;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+    h2 {
+      text-transform: uppercase;
+      letter-spacing: 0.05rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      margin-bottom: 1.5rem;
+    }
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      input {
+        width: 320px;
+        height: 35px;
+        border: 1px solid $dark-Cyan;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+      }
+      button {
+        cursor: pointer;
+        @include button($white);
+        width: 150px;
+        border-radius: 0.5rem;
+      }
+    }
+  }
+  &__contact {
+    width: 90%;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+    div {
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      img {
+        width: 20px;
+        margin-right: 2rem;
+      }
+    }
+  }
+  &__social {
+    width: 90%;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+    ul {
+      display: flex;
+      align-items: center;
+      li {
+        width: 40px;
+        height: 40px;
+        margin-right: 1rem;
+        a {
+          display: inline-block;
+          width: 100%;
+          border-radius: 0.5rem;
+          text-align: center;
+          background-color: $white;
+          color: $dark-Cyan;
+          transition: $transition-button;
+          &:hover {
+            color: $white;
+            background-color: $pink;
+            transition: $transition-button;
+          }
+          i {
+            font-size: 2rem;
+            line-height: 40px;
+          }
+        }
+      }
+    }
+  }
+  .info {
+    width: 90%;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    a {
+      color: $white;
+    }
+  }
+  @media screen and(min-width: 960px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(auto-fit, minmax(max-content, 1fr));
+    column-gap: 10rem;
+    align-items: center;
+    &__logo {
+      grid-row: 1/2;
+      width: 80%;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    &__news {
+      grid-column: 2/3;
+      grid-row: 1/3;
+      width: 80%;
+      margin-top: 0;
+      margin-bottom: 0;
+      form {
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: 2rem;
+        input {
+          width: 640px;
+          height: 70px;
+          margin-bottom: 0;
+        }
+        button {
+          width: 150px;
+        }
+      }
+    }
+    &__contact {
+      grid-column: 1/2;
+      grid-row: 2/3;
+      width: 80%;
+      margin-top: 0;
+      margin-bottom: 0;
+      div {
+        img {
+          width: 30px;
+        }
+      }
+    }
+    &__social {
+      grid-column: 1/2;
+      grid-row: 3/4;
+      width: 80%;
+      ul {
+        li {
+          width: 50px;
+          height: 50px;
+          margin-right: 2rem;
+          a {
+            i {
+              font-size: 2.5rem;
+            }
+          }
+        }
+      }
+    }
+    .info {
+      grid-column: 1/3;
+      grid-row: 4/5;
+    }
+  }
+}
